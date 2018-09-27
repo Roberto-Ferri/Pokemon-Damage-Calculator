@@ -1,1 +1,1 @@
-# Pok-mon-Damage-Calculator
+# Pokemon-Damage-Calculator
