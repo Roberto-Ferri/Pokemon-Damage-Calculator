@@ -11,7 +11,7 @@
 #define MON_ABILITY_MAX 16
 #define MON_ITEM_MAX 20
 
-pokemon_stats_t stats_calc (int nature,pokemon_stats_t mon_stats)
+pokemon_stats_t stats_calc (int nature, pokemon_stats_t mon_stats)
 {
   mon_stats = nature_boost_func(nature,mon_stats);
 
@@ -25,9 +25,11 @@ pokemon_stats_t stats_calc (int nature,pokemon_stats_t mon_stats)
   return mon_stats;
 }
 
-int max_roll_damage_func (pokemon_move_t atk_move; pokemon_t def_mon)
+int max_roll_damage_func (pokemon_stats_t atk_mon, pokemon_stats_t def_mon, pokemon_move_t atk_move)
 {
   int max_roll_damage;
 
-  //max_roll_damage = (22*(atk_move.base_power));
+  max_roll_damage = (((22*(atk_move.base_power)*rapport_atk_def_func(atk_mon, def_mon, atk_move))/50)+2)*modifier_func(/* COSE */);
+
+  return max_roll_damage;
 }

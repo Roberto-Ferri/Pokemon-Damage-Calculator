@@ -18,7 +18,7 @@ typedef struct stats_values_struct
     float EVs;
     float nature_boost;
 
-    int final_value;
+    float final_value;
 
 }stats_values_t;
 
@@ -48,8 +48,8 @@ typedef struct pokemon_move_struct
   int move_id;
   int base_power;
   typing_t move_type;
-  int category;
-  bool single_spread;
+  int category;  //0_STATUS 1_PHYSICAL 2_SPECIAL
+  int single_spread;  //0 single 1 spread
 
 }pokemon_move_t;
 

@@ -288,9 +288,61 @@ pokemon_stats_t nature_boost_func (int mon_nature,pokemon_stats_t mon_stats)
 }
 
 //------------- RAPPORTO TRA ATTACCO ATTACCANTE E DIFESA DEL DIFENSROE---------//
-int atk_def_func (pokemon_stats_t atk_mon, pokemon_stats_t def_mon)
+int rapport_atk_def_func (pokemon_stats_t atk_mon, pokemon_stats_t def_mon, pokemon_move_t move)
 {
   int rapport = 1;
 
-  //rapport = atk_mon. / def_mon;
+  else if (move.move_id == /*PYSHOCK*/)
+  {
+    rapport = (atk_mon.spatk.final_value) / (def_mon.def.final_value);
+  }
+
+  else if (move.move_id == /*PYSTRIKE*/)
+  {
+    rapport = (atk_mon.spatk.final_value) / (def_mon.def.final_value);
+  }
+
+  else if (move.move_id == /*SECRET SWORD*/)
+  {
+    rapport = (atk_mon.spatk.final_value) / (def_mon.def.final_value);
+  }
+
+  else if (move.move_id == /*FOUL PLAY*/)
+  {
+    rapport = (def_mon.atk.final_value) / (def_mon.def.final_value);
+  }
+
+  switch (move.category)
+  {
+    case 1:
+    {
+      rapport = (atk_mon.atk.final_value) / (def_mon.def.final_value);
+    }
+
+    case 2:
+    {
+      rapport = (atk_mon.spatk.final_value) / (def_mon.spdef.final_value);
+    }
+
+  }
+
+  return rapport;
+
+}
+
+float modifier_func (pokemon_stats_t atk_mon, pokemon_stats_t def_mon, pokemon_move_t move)
+{
+  float modifier = 1;
+
+  if (move.single_spread == 1 && single_double == 1)
+  {
+    modifier *= 0.75;
+  }
+
+  else if (weather == move.move_type.typing_1)
+  {
+    modifier *= 1.5
+  }
+
+
 }

@@ -41,6 +41,10 @@ typedef struct pokemon_struct
 
 }pokemon_t;
 
+int weather;
+int crit;
+int target_single_double; //0_single 1_double TARGET
+
 int main (void)
 {
   pokemon_t garchomp;
