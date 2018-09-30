@@ -2,7 +2,6 @@
 #include <stdlib.h>
 #include <math.h>
 #include <string.h>
-#include <bool.h>
 
 #include "auxiliar_func.c"
 
@@ -10,6 +9,8 @@
 #define MON_TYPE_MAX 8
 #define MON_ABILITY_MAX 16
 #define MON_ITEM_MAX 20
+
+float modifier_func (pokemon_stats_t atk_mon, pokemon_stats_t def_mon, pokemon_move_t move, conditions_t conditions);
 
 pokemon_stats_t stats_calc (int nature, pokemon_stats_t mon_stats)
 {
@@ -25,11 +26,11 @@ pokemon_stats_t stats_calc (int nature, pokemon_stats_t mon_stats)
   return mon_stats;
 }
 
-int max_roll_damage_func (pokemon_stats_t atk_mon, pokemon_stats_t def_mon, pokemon_move_t atk_move)
+int max_roll_damage_func (pokemon_stats_t atk_mon, pokemon_stats_t def_mon, pokemon_move_t atk_move, conditions_t conditions)
 {
-  int max_roll_damage;
+  float max_roll_damage;
 
-  max_roll_damage = (((22*(atk_move.base_power)*rapport_atk_def_func(atk_mon, def_mon, atk_move))/50)+2)*modifier_func(/* COSE */);
+  max_roll_damage = (((22*(atk_move.base_power)*(float)rapport_atk_def_func(atk_mon, def_mon, atk_move))/50)+2)*(float)modifier_func(atk_mon, def_mon, atk_move, conditions);
 
   return max_roll_damage;
 }

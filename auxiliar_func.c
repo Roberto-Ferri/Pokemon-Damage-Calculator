@@ -2,7 +2,6 @@
 #include <stdlib.h>
 #include <math.h>
 #include <string.h>
-#include <bool.h>
 
 pokemon_stats_t nature_boost_func (int mon_nature,pokemon_stats_t mon_stats)
 {
@@ -288,26 +287,26 @@ pokemon_stats_t nature_boost_func (int mon_nature,pokemon_stats_t mon_stats)
 }
 
 //------------- RAPPORTO TRA ATTACCO ATTACCANTE E DIFESA DEL DIFENSROE---------//
-int rapport_atk_def_func (pokemon_stats_t atk_mon, pokemon_stats_t def_mon, pokemon_move_t move)
+float rapport_atk_def_func (pokemon_stats_t atk_mon, pokemon_stats_t def_mon, pokemon_move_t move)
 {
-  int rapport = 1;
+  float rapport = 1;
 
-  else if (move.move_id == /*PYSHOCK*/)
+  if (move.move_id == 1/*PYSHOCK*/)
   {
     rapport = (atk_mon.spatk.final_value) / (def_mon.def.final_value);
   }
 
-  else if (move.move_id == /*PYSTRIKE*/)
+  else if (move.move_id == 1/*PYSTRIKE*/)
   {
     rapport = (atk_mon.spatk.final_value) / (def_mon.def.final_value);
   }
 
-  else if (move.move_id == /*SECRET SWORD*/)
+  else if (move.move_id == 1/*SECRET SWORD*/)
   {
     rapport = (atk_mon.spatk.final_value) / (def_mon.def.final_value);
   }
 
-  else if (move.move_id == /*FOUL PLAY*/)
+  else if (move.move_id == 1/*FOUL PLAY*/)
   {
     rapport = (def_mon.atk.final_value) / (def_mon.def.final_value);
   }
@@ -330,19 +329,36 @@ int rapport_atk_def_func (pokemon_stats_t atk_mon, pokemon_stats_t def_mon, poke
 
 }
 
-float modifier_func (pokemon_stats_t atk_mon, pokemon_stats_t def_mon, pokemon_move_t move)
+float modifier_func (pokemon_stats_t atk_mon, pokemon_stats_t def_mon, pokemon_move_t move, conditions_t conditions)
 {
   float modifier = 1;
 
-  if (move.single_spread == 1 && single_double == 1)
+  if (move.single_spread == 1 && conditions.target_single_double == 1)
   {
     modifier *= 0.75;
   }
 
-  else if (weather == move.move_type.typing_1)
+  else if (conditions.weather == move.move_type.typing_1)
   {
-    modifier *= 1.5
+    modifier *= 1.5;
   }
 
+  else if (conditions.crit == 1 )
+  {
+    modifier *= 1.5;
+//IGNORA MALUS ATTACCANTE E BONUS DIFENSROE
+  }
+
+  else if (conditions.helping_hand == 1)
+  {
+    modifier *= 1.5;
+  }
+
+  else if (conditions.friend_guard == 1)
+  {
+    modifier *= 0.75;
+  }
+
+  return modifier;
 
 }

@@ -2,7 +2,6 @@
 #include <stdlib.h>
 #include <math.h>
 #include <string.h>
-#include <bool.h>
 
 #define MON_NAME_MAX 15
 #define MON_TYPE_MAX 8
@@ -62,3 +61,14 @@ typedef struct pokemon_set_struct
   pokemon_move_t move_4;
 
 }pokemon_set_t;
+
+//----------CONDITIONS----------------------//
+typedef struct conditions_struct
+{
+  int weather;
+  int crit; //0 no crit 1 crit
+  int target_single_double; //0_single 1_double TARGET
+  int helping_hand;
+  int friend_guard;
+
+}conditions_t;

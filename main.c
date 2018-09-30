@@ -2,10 +2,10 @@
 #include <stdlib.h>
 #include <math.h>
 #include <string.h>
-#include <bool.h>
 
 #include "struct.c"
 #include "formulae_func.c"
+//#include "auxiliar_func.c"
 
 #define MON_NAME_MAX 15
 #define MON_TYPE_MAX 8
@@ -41,9 +41,7 @@ typedef struct pokemon_struct
 
 }pokemon_t;
 
-int weather;
-int crit;
-int target_single_double; //0_single 1_double TARGET
+conditions_t conditions;
 
 int main (void)
 {
@@ -64,9 +62,9 @@ int main (void)
 
   garchomp.pokemon_stats = stats_calc (garchomp.pokemon_nature,garchomp.pokemon_stats);
 
-  printf("\nGARCHOMP HP: %d\n\nGARCHOMP ATK 252+ : %d\n\nGARCHOMP SPATK - :%d\n", garchomp.pokemon_stats.hp.final_value,
-                                                                                  garchomp.pokemon_stats.atk.final_value,
-                                                                                  garchomp.pokemon_stats.spatk.final_value);
+  printf("\nGARCHOMP HP: %d\n\nGARCHOMP ATK 252+ : %d\n\nGARCHOMP SPATK - :%d\n", (int)garchomp.pokemon_stats.hp.final_value,
+                                                                                  (int)garchomp.pokemon_stats.atk.final_value,
+                                                                                  (int)garchomp.pokemon_stats.spatk.final_value);
 
   return 0;
 }
