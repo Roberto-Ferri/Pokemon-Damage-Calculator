@@ -346,7 +346,7 @@ float modifier_func (pokemon_stats_t atk_mon, pokemon_stats_t def_mon, pokemon_m
   else if (conditions.crit == 1 )
   {
     modifier *= 1.5;
-//IGNORA MALUS ATTACCANTE E BONUS DIFENSROE
+//IGNORA MALUS ATTACCANTE E BONUS DIFENSORE
   }
 
   else if (conditions.helping_hand == 1)
